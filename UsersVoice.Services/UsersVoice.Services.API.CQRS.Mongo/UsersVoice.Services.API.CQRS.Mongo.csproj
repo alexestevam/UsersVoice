@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CF8E6F2E-4C2C-4889-AF48-EE4E4B4719D7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>UsersVoice.Services.API.CQRS.Mongo</RootNamespace>
+    <AssemblyName>UsersVoice.Services.API.CQRS.Mongo</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=4.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.4.1.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MediatR, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MediatR.2.0.2\lib\net45\MediatR.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MongoDB.Bson, Version=2.2.0.262, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MongoDB.Bson.2.2.0\lib\net45\MongoDB.Bson.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MongoDB.Driver, Version=2.2.0.262, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MongoDB.Driver.2.2.0\lib\net45\MongoDB.Driver.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MongoDB.Driver.Core, Version=2.2.0.262, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MongoDB.Driver.Core.2.2.0\lib\net45\MongoDB.Driver.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Commands\Handlers\ImplementIdeaCommandHandler.cs" />
+    <Compile Include="Commands\Handlers\ApproveIdeaCommandHandler.cs" />
+    <Compile Include="Commands\Handlers\CreateIdeaCommentCommandHandler.cs" />
+    <Compile Include="Commands\Handlers\CreateAreaCommandHandler.cs" />
+    <Compile Include="Commands\Handlers\CreateUserCommandHandler.cs" />
+    <Compile Include="Commands\Handlers\CreateIdeaCommandHandler.cs" />
+    <Compile Include="Commands\Handlers\UnvoteIdeaCommandHandler.cs" />
+    <Compile Include="Commands\Handlers\CancelIdeaCommandHandler.cs" />
+    <Compile Include="Commands\Handlers\VoteIdeaCommandHandler.cs" />
+    <Compile Include="Events\Handlers\AreaCreatedEventHandler.cs" />
+    <Compile Include="Events\Handlers\IdeaCommentCreatedEventHandler.cs" />
+    <Compile Include="Events\Handlers\IdeaStatusChangedCommandHandler.cs" />
+    <Compile Include="Events\Handlers\UpdateUserPointsEventHandler.cs" />
+    <Compile Include="Events\Handlers\UserCreatedEventHandler.cs" />
+    <Compile Include="Events\Handlers\UpdateIdeaVotesEventHandler.cs" />
+    <Compile Include="Events\Handlers\IdeaCreatedEventHandler.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Queries\Handlers\HasVotedQueryHandler.cs" />
+    <Compile Include="Queries\QueryDefinitionFactories\IdeaCommentsArchiveQueryDefinitionFactory.cs" />
+    <Compile Include="Queries\Runners\DefaultArchiveQueryRunner.cs" />
+    <Compile Include="Queries\QueryDefinitionFactories\AreaDetailsQueryDefinitionFactory.cs" />
+    <Compile Include="Queries\QueryDefinitionFactories\AreaArchiveQueryDefinitionFactory.cs" />
+    <Compile Include="Queries\QueryDefinitionFactories\IdeasArchiveQueryDefinitionFactory.cs" />
+    <Compile Include="Queries\QueryDefinitionFactories\IdeaDetailsQueryDefinitionFactory.cs" />
+    <Compile Include="Queries\QueryDefinitionFactories\UsersArchiveQueryDefinitionFactory.cs" />
+    <Compile Include="Queries\Runners\DefaultDetailsQueryRunner.cs" />
+    <Compile Include="Queries\QueryDefinitionFactories\UserDetailsQueryDefinitionFactory.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UsersVoice.Services.API.CQRS\UsersVoice.Services.API.CQRS.csproj">
+      <Project>{e347b9e9-1cbc-4e9b-b0fb-73c45fc0c379}</Project>
+      <Name>UsersVoice.Services.API.CQRS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UsersVoice.Services.Common.CQRS\UsersVoice.Services.Common.CQRS.csproj">
+      <Project>{0fa09a37-b614-49f4-bce5-bf6e14d7cb76}</Project>
+      <Name>UsersVoice.Services.Common.CQRS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UsersVoice.Services.Infrastructure.Common\UsersVoice.Services.Infrastructure.Common.csproj">
+      <Project>{e711ad99-5b71-415b-920e-fd05ac3aa7c8}</Project>
+      <Name>UsersVoice.Services.Infrastructure.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UsersVoice.Services.Infrastructure.Mongo\UsersVoice.Services.Infrastructure.Mongo.csproj">
+      <Project>{5395d906-e7ce-44d2-9a48-789f38a0b989}</Project>
+      <Name>UsersVoice.Services.Infrastructure.Mongo</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

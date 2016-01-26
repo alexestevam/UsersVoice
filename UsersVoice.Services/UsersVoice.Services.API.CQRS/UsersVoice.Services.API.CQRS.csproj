@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E347B9E9-1CBC-4E9B-B0FB-73C45FC0C379}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>UsersVoice.Services.API.CQRS</RootNamespace>
+    <AssemblyName>UsersVoice.Services.API.CQRS</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MediatR, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MediatR.2.0.2\lib\net45\MediatR.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Commands\CreateArea.cs" />
+    <Compile Include="Commands\CreateIdeaComment.cs" />
+    <Compile Include="Commands\CreateUser.cs" />
+    <Compile Include="Commands\CreateIdea.cs" />
+    <Compile Include="Commands\UnvoteIdea.cs" />
+    <Compile Include="Commands\ChangeIdeaStatus.cs" />
+    <Compile Include="Commands\VoteIdea.cs" />
+    <Compile Include="Events\AreaCreated.cs" />
+    <Compile Include="Events\IdeaCommentCreated.cs" />
+    <Compile Include="Events\IdeaUnvoted.cs" />
+    <Compile Include="Events\IdeaStatusChanged.cs" />
+    <Compile Include="Events\IVoteNotification.cs" />
+    <Compile Include="Events\UserCreated.cs" />
+    <Compile Include="Events\IdeaVoted.cs" />
+    <Compile Include="Events\IdeaCreated.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Queries\Handlers\DefaultArchiveQueryHandler.cs" />
+    <Compile Include="Queries\Handlers\DefaultDetailsQueryHandler.cs" />
+    <Compile Include="Queries\AreaDetailsQuery.cs" />
+    <Compile Include="Queries\AreasArchiveQuery.cs" />
+    <Compile Include="Queries\IdeaCommentsArchiveQuery.cs" />
+    <Compile Include="Queries\HasVotedQuery.cs" />
+    <Compile Include="Queries\IdeasArchiveQuery.cs" />
+    <Compile Include="Queries\Enums.cs" />
+    <Compile Include="Queries\IMapper.cs" />
+    <Compile Include="Queries\Models\AreaArchiveItem.cs" />
+    <Compile Include="Queries\Models\AreaDetails.cs" />
+    <Compile Include="Queries\Models\IdeaCommentArchiveItem.cs" />
+    <Compile Include="Queries\Models\IdeaDetails.cs" />
+    <Compile Include="Queries\Models\IdeaArchiveItem.cs" />
+    <Compile Include="Queries\Models\UserDetails.cs" />
+    <Compile Include="Queries\Models\UserArchiveItem.cs" />
+    <Compile Include="Queries\IdeaDetailsQuery.cs" />
+    <Compile Include="Queries\UsersArchiveQuery.cs" />
+    <Compile Include="Queries\UserDetailsQuery.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UsersVoice.Services.Common.CQRS\UsersVoice.Services.Common.CQRS.csproj">
+      <Project>{0fa09a37-b614-49f4-bce5-bf6e14d7cb76}</Project>
+      <Name>UsersVoice.Services.Common.CQRS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UsersVoice.Services.Infrastructure.Common\UsersVoice.Services.Infrastructure.Common.csproj">
+      <Project>{e711ad99-5b71-415b-920e-fd05ac3aa7c8}</Project>
+      <Name>UsersVoice.Services.Infrastructure.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
