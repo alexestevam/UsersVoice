@@ -1,0 +1,35 @@
+﻿<div ng-controller="VotingIdeaController" class="idea-details">
+    <div class="col-md-8">
+
+        <div class="row bottom20">
+            <div class="col-md-12 boxTitle bottom10">
+                <h2>{{model.Title}}</h2>
+            </div>
+            <div class="col-md-12">
+                <span class="posted-on">posted on {{model.CreationDate | date : shortDate}}</span>
+                <div class="pull-right">
+                    <span class="glyphicon glyphicon-heart"></span> {{model.TotalPoints}}
+                    <span class="glyphicon glyphicon-comment"></span> {{model.TotalComments}} 
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <p class="description">{{model.Description}}</p>
+            </div>
+
+            <div ng-include="'/app/views/VoteIdea.html'"></div>
+            <div ng-include="'/app/views/changeIdeaStatus.html'"></div>
+        </div>
+
+        <div ng-include="'/app/views/IdeaComments.html'"></div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="col-md-12 text-center">
+            <img src="../../Content/images/user.JPG" alt="{{model.AuthorCompleteName}}" class="img-circle">
+        </div>
+        <div class="col-md-12 text-center"><h4>{{model.AuthorCompleteName}}</h4></div>
+    </div>
+</div>
